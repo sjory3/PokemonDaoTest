@@ -8,9 +8,10 @@ namespace PokemonDaoPattern
 {
     interface PokemonDao
     {
+        //interface with the diffrent method the classes that inherrent this need to have
         List<Pokemon> GetAllPokemons();
         Pokemon GetPokemonOnId(int number);
         void AddPokemon(Pokemon pokemon);
-        void DeletePokemon(Pokemon pokemon);
+        void DeletePokemonOnId(int number);
     }
 }

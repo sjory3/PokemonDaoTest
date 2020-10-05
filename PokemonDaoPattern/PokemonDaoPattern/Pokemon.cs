@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace PokemonDaoPattern
 {
+
+    //simple pokemon object with diffrent atributes and method for getting access to the data
     class Pokemon
     {
         private string name;

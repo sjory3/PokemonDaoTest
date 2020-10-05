@@ -91,7 +91,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Database.cs" />
     <Compile Include="Pokemon.cs" />
     <Compile Include="PokemonDao.cs" />
     <Compile Include="PokemonDaoimpl.cs" />
