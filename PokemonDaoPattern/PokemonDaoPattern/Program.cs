@@ -13,17 +13,15 @@ namespace PokemonDaoPattern
         {
             PokemonDao pokemonDao = new PokemonDaoimpl();
 
-            foreach(Pokemon pokemon in pokemonDao.GetAllPokemons())
-            {
-                Debug.WriteLine("Pokemon : #" + pokemon.GetNumber() + ", Name : " + pokemon.GetName());
-            }
 
-            Pokemon pokemon1 = pokemonDao.GetAllPokemons().ElementAt(0);
-            pokemon1.SetName("not bulabusaure");
-            pokemonDao.UpdatePokemon(pokemon1);
+            Pokemon pokemon = pokemonDao.GetPokemonOnId(3);
+            Console.WriteLine(pokemon.GetName());
+            Console.WriteLine(pokemon.GetNumber());
+            Console.WriteLine(pokemon.GetType1());
+            Console.WriteLine(pokemon.GetType2());
 
-            pokemonDao.GetPokemon(0);
-            Debug.WriteLine("Pokemon : #" + pokemon1.GetNumber() + ", Name : " + pokemon1.GetName());
+            Console.ReadLine();
+
         }
     }
 }

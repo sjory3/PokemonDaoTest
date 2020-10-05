@@ -9,8 +9,8 @@ namespace PokemonDaoPattern
     interface PokemonDao
     {
         List<Pokemon> GetAllPokemons();
-        Pokemon GetPokemon(int number);
-        void UpdatePokemon(Pokemon pokemon);
+        Pokemon GetPokemonOnId(int number);
+        void AddPokemon(Pokemon pokemon);
         void DeletePokemon(Pokemon pokemon);
     }
 }
