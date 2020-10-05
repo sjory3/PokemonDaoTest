@@ -1,0 +1,7 @@
+C:\Users\Administrator\source\repos\PokemonDaoPattern\PokemonDaoPattern\bin\Debug\PokemonDaoPattern.exe.config
+C:\Users\Administrator\source\repos\PokemonDaoPattern\PokemonDaoPattern\bin\Debug\PokemonDaoPattern.exe
+C:\Users\Administrator\source\repos\PokemonDaoPattern\PokemonDaoPattern\bin\Debug\PokemonDaoPattern.pdb
+C:\Users\Administrator\source\repos\PokemonDaoPattern\PokemonDaoPattern\obj\Debug\PokemonDaoPattern.csprojAssemblyReference.cache
+C:\Users\Administrator\source\repos\PokemonDaoPattern\PokemonDaoPattern\obj\Debug\PokemonDaoPattern.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\PokemonDaoPattern\PokemonDaoPattern\obj\Debug\PokemonDaoPattern.exe
+C:\Users\Administrator\source\repos\PokemonDaoPattern\PokemonDaoPattern\obj\Debug\PokemonDaoPattern.pdb
