@@ -16,20 +16,20 @@ namespace PokemonDaoPattern
 
             
             //testing the delete option
-            pokemonDao.DeletePokemonOnId(17);
-            pokemonDao.DeletePokemonOnId(18);
+            pokemonDao.DeletePokemonOnId(1);
+            pokemonDao.DeletePokemonOnId(2);
 
             //making a test pokemon for adding to the database
-            Pokemon poke1 = new Pokemon("Pidgeotto", 17, "Normal", "Flying");
+            Pokemon poke1 = new Pokemon("Bulbasaur", 1, "Grass", "Poison");
             pokemonDao.AddPokemon(poke1);
 
-            Pokemon poke2 = new Pokemon("Pidgeot", 18, "Normal", "Flying");
+            Pokemon poke2 = new Pokemon("Ivysaur", 2, "Grass", "Poison");
             pokemonDao.AddPokemon(poke2);
 
             
 
             //making a test on the get pokemon method from database
-            Pokemon pokemon = pokemonDao.GetPokemonOnId(4);
+            Pokemon pokemon = pokemonDao.GetPokemonOnId(2);
             Debug.WriteLine("----------GET ONE--------------");
             Debug.WriteLine("Name   : " + pokemon.GetName());
             Debug.WriteLine("ID     : " + pokemon.GetNumber());
