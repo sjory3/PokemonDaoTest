@@ -14,7 +14,7 @@ namespace PokemonDaoPattern
             //instansiating pokemonDao to call the methods
             PokemonDao pokemonDao = new PokemonDaoimpl();
 
-            
+
             //testing the delete option
             pokemonDao.DeletePokemonOnId(1);
             pokemonDao.DeletePokemonOnId(2);
