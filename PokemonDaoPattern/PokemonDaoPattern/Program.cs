@@ -14,22 +14,46 @@ namespace PokemonDaoPattern
             //instansiating pokemonDao to call the methods
             PokemonDao pokemonDao = new PokemonDaoimpl();
 
+            
+            //testing the delete option
+            pokemonDao.DeletePokemonOnId(17);
+            pokemonDao.DeletePokemonOnId(18);
+
             //making a test pokemon for adding to the database
-            Pokemon ven = new Pokemon("Venusaur", 3, "Grass", "Poison");
-            pokemonDao.AddPokemon(ven);
+            Pokemon poke1 = new Pokemon("Pidgeotto", 17, "Normal", "Flying");
+            pokemonDao.AddPokemon(poke1);
+
+            Pokemon poke2 = new Pokemon("Pidgeot", 18, "Normal", "Flying");
+            pokemonDao.AddPokemon(poke2);
+
+            
 
             //making a test on the get pokemon method from database
-            Pokemon pokemon = pokemonDao.GetPokemonOnId(3);
-            Console.WriteLine(pokemon.GetName());
-            Console.WriteLine(pokemon.GetNumber());
-            Console.WriteLine(pokemon.GetType1());
-            Console.WriteLine(pokemon.GetType2());
+            Pokemon pokemon = pokemonDao.GetPokemonOnId(4);
+            Debug.WriteLine("----------GET ONE--------------");
+            Debug.WriteLine("Name   : " + pokemon.GetName());
+            Debug.WriteLine("ID     : " + pokemon.GetNumber());
+            Debug.WriteLine("Type 1 : " + pokemon.GetType1());
+            Debug.WriteLine("Type 2 : " + pokemon.GetType2());
+            Debug.WriteLine("------------------------------");
 
-            //making a test to delete from database
-            pokemonDao.DeletePokemonOnId(3);
+            //testing the get all pokemons
+            List<Pokemon> pokemons = new List<Pokemon>();
+            pokemons = pokemonDao.GetAllPokemons();
 
-            Console.ReadLine();
+            Debug.WriteLine("---------------------------------------------\n" +
+                            "--------------------GET ALL------------------\n" +
+                            "---------------------------------------------");
 
+            foreach (Pokemon pok in pokemons)
+            {
+                Debug.WriteLine("------------------------------");
+                Debug.WriteLine("Name   : " + pok.GetName());
+                Debug.WriteLine("ID     : " + pok.GetNumber());
+                Debug.WriteLine("Type 1 : " + pok.GetType1());
+                Debug.WriteLine("Type 2 : " + pok.GetType2());
+                Debug.WriteLine("------------------------------");
+            }
         }
     }
 }

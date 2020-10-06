@@ -38,15 +38,36 @@ namespace PokemonDaoPattern
             //executing the query
             cmd.ExecuteNonQuery();
 
+            Debug.WriteLine("[DELETED] #" + number);
+
             //closing the connection
             conn.Close();
         }
 
-        //i dident have time to implement the get all pokemons from the database
-        //because i had some problems with it
+
         public List<Pokemon> GetAllPokemons()
         {
-            throw new NotImplementedException();
+            List<int> pokemonsNumbers = new List<int>();
+            List<Pokemon> pokemons = new List<Pokemon>();
+
+            conn.Open();
+            string cmdString = "select pokemons.pokemon.id from pokemons.pokemon";
+            MySqlCommand cmd = new MySqlCommand(cmdString, conn);
+            MySqlDataReader reader = cmd.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+            foreach (DataRow dr in dt.Rows)
+            {
+                pokemonsNumbers.Add(int.Parse(dr["id"].ToString()));
+            }
+            conn.Close();
+            foreach (int number in pokemonsNumbers)
+            {
+                pokemons.Add(GetPokemonOnId(number));
+            }
+
+            return pokemons;
+
         }
 
         //getting the pokemon from diffrent tables then returning a pokemon object with the information
@@ -93,16 +114,29 @@ namespace PokemonDaoPattern
                 }
 
             }
+
             //closing the reader
             reader.Close();
+
             //changing the command string to get the first type from the database
             cmd.CommandText = "select pokemons.elements.element from pokemons.elements where pokemons.elements.id = " + element1 + ";";
+
             //saving the type to element1
             element1 = cmd.ExecuteScalar().ToString();
-            //changing the commands string to get the second type from the database
-            cmd.CommandText = "select pokemons.elements.element from pokemons.elements where pokemons.elements.id = " + element2 + ";";
-            //saving the type to element2
-            element2 = cmd.ExecuteScalar().ToString();
+
+            if (element2 != "")
+            {
+                //changing the commands string to get the second type from the database
+                cmd.CommandText = "select pokemons.elements.element from pokemons.elements where pokemons.elements.id = " + element2 + ";";
+
+                //saving the type to element2
+                element2 = cmd.ExecuteScalar().ToString();
+            }
+            else
+            {
+                element2 = "[No Second Type]";
+            }
+
             //closing the connection
             conn.Close();
             //making a pokemon object from the data we got from the diffrent tables
@@ -125,15 +159,29 @@ namespace PokemonDaoPattern
             cmd.CommandText = "SELECT pokemons.elements.id from pokemons.elements where elements.element = '" + pokemon.GetType1() + "';";
             int type1 = int.Parse(cmd.ExecuteScalar().ToString());
 
-            cmd.CommandText = "SELECT pokemons.elements.id from pokemons.elements where elements.element = '" + pokemon.GetType2() + "';";
-            int type2 = int.Parse(cmd.ExecuteScalar().ToString());
-
             //saving the pokemon type and id to the binding table between pokemon and elements
             cmd.CommandText = "insert into pokemons.pokemonelements values(" + pokemon.GetNumber() + "," + type1 + ");";
             cmd.ExecuteNonQuery();
 
-            cmd.CommandText = "insert into pokemons.pokemonelements values(" + pokemon.GetNumber() + "," + type2 + ");";
-            cmd.ExecuteNonQuery();
+            //statement to check if the second type exsist
+            if (pokemon.GetType2() != "")
+            {
+                //changing the command string to get the elements id of the elements
+                cmd.CommandText = "SELECT pokemons.elements.id from pokemons.elements where elements.element = '" + pokemon.GetType2() + "';";
+                int type2 = int.Parse(cmd.ExecuteScalar().ToString());
+
+                //saving the pokemon type and id to the binding table between pokemon and elements
+                cmd.CommandText = "insert into pokemons.pokemonelements values(" + pokemon.GetNumber() + "," + type2 + ");";
+                cmd.ExecuteNonQuery();
+            }
+
+            Debug.WriteLine("----------[ADDED]--------" +
+                            "\nName   : " + pokemon.GetName() +
+                            "\nid     : " + pokemon.GetNumber() +
+                            "\nType 1 : " + pokemon.GetType1() +
+                            "\nType 2 : " + pokemon.GetType2() + 
+                            "\n-------------------------");
+
 
             //closing the connection
             conn.Close();
