@@ -27,6 +27,7 @@ namespace PokemonDaoPattern
             //open the connection to the database
             conn.Open();
             //command string for sending commands
+            Hvorfor bruger du ikke parametre?
             string cmdStringToPokemon = "delete from pokemons.pokemonelements where pokemons.pokemonelements.pokemonId = " + number + ";";
             //instanse of mysql command
             MySqlCommand cmd = new MySqlCommand(cmdStringToPokemon, conn);
@@ -58,6 +59,7 @@ namespace PokemonDaoPattern
             dt.Load(reader);
             foreach (DataRow dr in dt.Rows)
             {
+            //Dette er noget sjusk, du kan sagtens læse det hele ind på en gang, hvorfor så mange databasekald?
                 pokemonsNumbers.Add(int.Parse(dr["id"].ToString()));
             }
             conn.Close();
@@ -149,6 +151,7 @@ namespace PokemonDaoPattern
         public void AddPokemon(Pokemon pokemon)
         {
             //opens connection
+            //Det er pænere at gøre brug af using statements istedet for her
             conn.Open();
             //saving the name and number into the pokemon table
             string cmdStringToPokemon = "insert into pokemons.pokemon Values(" + pokemon.GetNumber() + ", '" + pokemon.GetName() + "');";
