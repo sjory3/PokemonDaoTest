@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace PokemonDaoPattern
 {
+    Hvorfor bruger du ikke C# kodestandard ved interface?
     interface PokemonDao
     {
         //interface with the diffrent method the classes that inherrent this need to have
