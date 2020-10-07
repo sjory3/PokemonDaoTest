@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PokemonDaoPattern
 {
-
+//Din Pokemon er ret simpel, hvad med de andre attributter der hører til en Pokemon?
     //simple pokemon object with diffrent atributes and method for getting access to the data
     class Pokemon
     {
